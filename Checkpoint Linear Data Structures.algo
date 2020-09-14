@@ -1,0 +1,58 @@
+ALGORITHM checkpoint_linearData
+VAR
+ i, j: INTEGER;
+ x, y : INTEGER := 0;
+ arr1 :  ARRAY_OF INTEGER[4];
+ arr2 : ARRAY_OF INTEGER[5];
+BEGIN
+    arr1:={3,1,7,9};
+    arr2:={2,4,1,9,3}
+FOR i FROM 0 TO arr1.length-1 DO
+   i++;
+   FOR j FROM 0 TO arr2.length-1 DO
+     j++;
+     IF (arr1[i] == arr2[j]) THEN
+         x := (x + tab[i])*2 ;
+     ELSE y : = (y + tab[j]);
+     END_IF
+   END_FOR
+END_FOR
+
+ write ('Sum of overlapping elements is:' + x + 'and the Sum of distinct elements is:' y );
+END
+
+
+ALGORITHM checkpoint_linearDataHashtable
+VAR
+   i, j: INTEGER;
+ x, y : INTEGER := 0;
+ arr1 :  ARRAY_OF INTEGER[4];
+ arr2 : ARRAY_OF INTEGER[5];
+  htab : HASH_TABLE<INTEGER,INTEGER>;
+
+BEGIN
+    FOR i FROM 0 TO str.length -1 STEP 1  DO
+       IF (htab.lookup(str[i]) = TRUE) THEN
+           count := htab.get(str[i]);
+           htab.insert(str[i],count+1);
+       ELSE
+           htab.insert(str[i],1);
+       END_IF
+   END_FOR
+    arr1:={3,1,7,9};
+    arr2:={2,4,1,9,3}
+FOR i FROM 0 TO arr1.Length - 1   DO
+                htab.insert(i, arr1[i]);
+  END_FOR
+        FOR j FROM 0 TO arr2.Length - 1   DO
+           IF (htab.lookup(arr2[j]= true)) THEN
+                x := x + (htab.get(arr2[j]))*2 ;
+            ELSE y : = y + htab.get(arr2[j]);
+           END_IF
+        END_FOR                      
+            
+
+           
+
+ write ('Sum of overlapping elements is:' + x + 'and the Sum of distinct elements is:' y );
+END
